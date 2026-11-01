@@ -161,6 +161,25 @@ input:focus, textarea:focus {
 
 .empty { text-align: center; color: var(--muted); padding: 40px 0; }
 
+/* Weather widget (OpenWeather API) */
+.weather {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.weather-form { display: flex; gap: 8px; }
+.weather-form input { flex: 1; min-width: 0; }
+.weather-body { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+.weather-body img { flex-shrink: 0; background: var(--bg); border-radius: 50%; }
+.weather-temp { font-size: 1.75rem; font-weight: 700; line-height: 1.1; }
+.weather-place { font-size: 0.95rem; font-weight: 500; color: var(--muted); margin-left: 8px; }
+.weather-desc { text-transform: capitalize; margin-top: 2px; }
+.weather-meta { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
+.weather-error { color: var(--danger); font-size: 0.9rem; margin-top: 10px; }
+.weather-credit { color: var(--muted); font-size: 0.7rem; margin-top: 10px; text-align: right; }
+
 /* Mobile */
 @media (max-width: 560px) {
   .container { padding-top: 24px; }

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import TaskForm from "./components/TaskForm.jsx";
 import TaskItem from "./components/TaskItem.jsx";
+import WeatherWidget from "./components/WeatherWidget.jsx";
 import * as api from "./api/tasks.js";
 
 const FILTERS = ["all", "active", "completed"];
@@ -61,11 +62,13 @@ export default function App() {
   return (
     <div className="container">
       <header className="header">
-        <h1>Task Manager</h1>
+        <h1>Task Manager &amp; Weather</h1>
         <p className="subtitle">
           {tasks.length} tasks · {doneCount} completed · {tasks.length - doneCount} remaining
         </p>
       </header>
+
+      <WeatherWidget defaultCity="Karachi" />
 
       <TaskForm onAdd={addTask} />
 

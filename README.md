@@ -89,3 +89,17 @@ curl -X DELETE http://localhost:5000/api/tasks/<id>
   "updatedAt": "2026-11-01T13:00:00.000Z"
 }
 ```
+
+## API Integration — OpenWeather
+
+**API used:** [OpenWeather Current Weather API](https://openweathermap.org/current) (`/data/2.5/weather`)
+
+**Implementation:**
+- **Backend (Express):** new route `GET /api/weather?city=<name>` (`routes/weatherRoutes.js`, `controllers/weatherController.js`). It calls OpenWeather with the API key stored in `backend/.env` (`OPENWEATHER_API_KEY`), so the key is never exposed to the browser. The response is trimmed to the fields the UI needs (temperature, feels-like, humidity, wind, description, icon) and errors are mapped to clear messages (missing city, city not found, invalid key).
+- **Frontend (React):** `WeatherWidget.jsx` sits above the task list. It loads Karachi's weather on start, lets the user search any city, and shows loading and error states. It calls our backend through `src/api/weather.js` (Axios).
+
+**Setup:** get a free key at https://home.openweathermap.org/api_keys, add `OPENWEATHER_API_KEY=<your key>` to `backend/.env`, and restart the backend.
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/weather?city=Karachi` | Current weather for a city (via OpenWeather) |
